@@ -1,5 +1,6 @@
 {
   "name": "demo-book-list",
+  "homepage": "https://Samaev.github.io/demo-book-list_react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +17,8 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -43,6 +46,7 @@
   },
   "devDependencies": {
     "concurrently": "^7.4.0",
+    "gh-pages": "^4.0.0",
     "json-server": "^0.16.3"
   }
 }

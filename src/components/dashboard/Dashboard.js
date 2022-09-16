@@ -42,18 +42,18 @@ export default function Dashboard(props) {
     setRefresh(!refresh);
   };
 
-  let listBooks = data.map((el) => (
-    <tr key={el.id}>
-      <td>{el.id}</td>
-      <td>{el.book_name}</td>
-      <td>{el.author_name}</td>
-      <td>{el.category}</td>
-      <td>{el.ISBN}</td>
+  let listBooks = data.map((book) => (
+    <tr key={book.id}>
+      <td>{book.id}</td>
+      <td>{book.book_name}</td>
+      <td>{book.author_name}</td>
+      <td>{book.category}</td>
+      <td>{book.ISBN}</td>
       <td>
         <ButtonGroup>
           <Link
             to={{
-              pathname: `/book/${el.id}`,
+              pathname: `/book/${book.id}`,
             }}
           >
             <Button variant="warning">Edit</Button>
@@ -61,7 +61,7 @@ export default function Dashboard(props) {
           <Button
             variant="outline-danger"
             size="sm"
-            id={el.id}
+            id={book.id}
             onClick={handleDelete}
           >
             Delete
