@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -9,14 +11,13 @@ import {
   Container,
 } from "react-bootstrap";
 import {
-  BrowserRouter as Router,
   Link,
 } from "react-router-dom";
-import GenresList from "./GenreLists";
+import Categories from "./Categories";
 
 
-export default function AddABook({ match }) {
-  const [bTitle, setbTitle] = useState("");
+export default function BookForm({ match }) {
+  const [title, setTitle] = useState("");
   const [aName, setaName] = useState("");
   const [cat, setCat] = useState("Drama");
   const [ISBN, setISBN] = useState("");
@@ -26,7 +27,7 @@ export default function AddABook({ match }) {
     let el = await axios
       .get(`http://localhost:3010/books/${match.params.id}`)
       .then((res) => {
-        setbTitle(res.data.book_name);
+        setTitle(res.data.book_name);
         setaName(res.data.author_name);
         setCat(res.data.category);
         setISBN(res.data.ISBN);
@@ -40,7 +41,7 @@ export default function AddABook({ match }) {
   }, []);
 
   const resetF = () => {
-    setbTitle("");
+    setTitle("");
     setaName("");
     setCat("");
     setISBN("");
@@ -55,7 +56,7 @@ export default function AddABook({ match }) {
       axios
         .patch(`http://localhost:3010/books/${match.params.id}`, {
           id: match.params.id,
-          book_name: bTitle,
+          book_name: title,
           author_name: aName,
           category: cat,
           ISBN: ISBN,
@@ -74,7 +75,7 @@ export default function AddABook({ match }) {
       axios
         .post(`http://localhost:3010/books`, {
           id: ind,
-          book_name: bTitle,
+          book_name: title,
           author_name: aName,
           category: cat,
           ISBN: ISBN,
@@ -120,7 +121,7 @@ export default function AddABook({ match }) {
           <br />
           <Col xl={9}>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-              <Form.Group as={Row} controlId="bTitle">
+              <Form.Group as={Row} controlId="title">
                 <Form.Label column sm={2}>
                   Book title
                 </Form.Label>
@@ -128,9 +129,9 @@ export default function AddABook({ match }) {
                   <Form.Control
                     required
                     type="text"
-                    value={bTitle}
+                    value={title}
                     onChange={(e) => {
-                      setbTitle(e.target.value);
+                      setTitle(e.target.value);
                     }}
                     placeholder="Enter here book title"
                   />
@@ -168,7 +169,7 @@ export default function AddABook({ match }) {
                     as="select"
                     onChange={handleCat}
                   >
-                    <GenresList />
+                    <Categories />
                     <Form.Control.Feedback type="invalid">
                       Please choose genre.
                     </Form.Control.Feedback>
@@ -207,7 +208,7 @@ export default function AddABook({ match }) {
                       style={{
                         display:
                           aName.length > 0 &&
-                          bTitle.length > 0 &&
+                          title.length > 0 &&
                           ISBN.length === 13
                             ? "none"
                             : "",
@@ -216,7 +217,7 @@ export default function AddABook({ match }) {
                       <Alert.Heading>
                         Red bordered inputs cannot be empty!
                       </Alert.Heading>
-                      <p style={{ display: bTitle.length > 0 ? "none" : "" }}>
+                      <p style={{ display: title.length > 0 ? "none" : "" }}>
                         Please enter Book title
                       </p>
                       <p style={{ display: aName.length > 0 ? "none" : "" }}>
@@ -234,7 +235,7 @@ export default function AddABook({ match }) {
                     // onClick={handleClick}
                     // disabled={
                     //     aName.length < 1 ||
-                    //     bTitle.length < 1 ||
+                    //     title.length < 1 ||
                     //     ISBN.length !== 13
                     //   }
                   >
