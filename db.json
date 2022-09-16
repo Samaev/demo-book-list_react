@@ -1,0 +1,18 @@
+{
+  "books": [
+    {
+      "id": 0,
+      "book_name": "First commit",
+      "author_name": "Jacob Alert",
+      "category": "Drama",
+      "ISBN": "1223451213123"
+    },
+    {
+      "id": 1,
+      "book_name": "On the House: A Washington Memoir",
+      "author_name": "John Boehner",
+      "category": "Comedy",
+      "ISBN": "1247653242346"
+    }
+  ]
+}
