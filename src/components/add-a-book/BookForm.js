@@ -18,6 +18,7 @@ import Categories from "./Categories";
 
 export default function BookForm({ match }) {
   const [title, setTitle] = useState("");
+  const[active, setActive] = useState(false);
   const [aName, setaName] = useState("");
   const [cat, setCat] = useState("Drama");
   const [ISBN, setISBN] = useState("");
@@ -31,6 +32,7 @@ export default function BookForm({ match }) {
         setaName(res.data.author_name);
         setCat(res.data.category);
         setISBN(res.data.ISBN);
+        setActive(true);
       })
       .catch((err) => alert(err));
   };
@@ -60,6 +62,7 @@ export default function BookForm({ match }) {
           author_name: aName,
           category: cat,
           ISBN: ISBN,
+          active: active,
         })
         .then(() => alert("Successfull update"))
         .catch((err) => alert(err));
@@ -71,7 +74,6 @@ export default function BookForm({ match }) {
         })
         .catch((err) => alert(err));
       ind += 1;
-      console.log(ind);
       axios
         .post(`http://localhost:3010/books`, {
           id: ind,
@@ -79,6 +81,7 @@ export default function BookForm({ match }) {
           author_name: aName,
           category: cat,
           ISBN: ISBN,
+          active: active,
         })
         .then((res) => alert(`Book successfully added with index: ${ind}`))
         .catch((err) => alert("something went wrong: " + err));

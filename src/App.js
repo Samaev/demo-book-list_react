@@ -11,6 +11,12 @@ function App() {
         <Route exact path="/" component={withRouter(Dashboard)} />
         <Route exact path="/book" component={withRouter(BookForm)} />
         <Route exact path="/book/:id" component={withRouter(BookForm)} />
+        <Route
+          path="/git"
+          component={() => {
+            window.location.href="https://github.com/Samaev";
+          }}
+        />
       </Switch>
     </Router>
   );

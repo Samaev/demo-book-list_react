@@ -28,7 +28,19 @@
 .App-link {
   color: #61dafb;
 }
-
+#root {
+  margin-bottom:50px;
+}
+.footer {
+  position: fixed;
+  height: 50px;
+  background-color: grey;
+  bottom: 0px;
+  text-align: center;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

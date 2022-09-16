@@ -37,6 +37,14 @@
       "author_name": "2345234",
       "category": "Action",
       "ISBN": "1234567890000"
+    },
+    {
+      "id": 7,
+      "book_name": "qwe",
+      "author_name": "qwe",
+      "category": "Action",
+      "ISBN": "2222222222222",
+      "active": false
     }
   ]
 }

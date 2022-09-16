@@ -9,11 +9,10 @@ import {
   Container,
 } from "react-bootstrap";
 import {
-  BrowserRouter as Router,
-  Link
+  NavLink,
+  Link,
 } from "react-router-dom";
-
-export default function Dashboard(props) {
+export default function Dashboard({match}) {
   const [data, setData] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
@@ -28,7 +27,6 @@ export default function Dashboard(props) {
   }, [refresh]);
 
   const handleDelete = (event) => {
-    console.log(event);
     let id = event.target.id;
     let confirmDel = window.confirm(
       `You realy want to delete book with index ${id}?`
@@ -66,6 +64,13 @@ export default function Dashboard(props) {
           >
             Delete
           </Button>
+          <Button
+            variant="outline-info"
+            size="sm"
+            id={book.id}
+          >
+            Activate
+          </Button>
         </ButtonGroup>
       </td>
     </tr>
@@ -101,6 +106,11 @@ export default function Dashboard(props) {
           <tbody>{listBooks}</tbody>
         </Table>
       </Container>
+      <footer className="footer">
+        <NavLink to="/git" target="_blank">
+          Enter MY GIT
+        </NavLink>
+      </footer>
     </div>
   );
 }
